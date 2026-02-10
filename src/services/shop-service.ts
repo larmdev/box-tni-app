@@ -1,4 +1,3 @@
-// src/services/shop-service.ts
 import { Product, CartItem } from '@/types/shop';
 
 export const shopService = {
@@ -12,7 +11,6 @@ export const shopService = {
         if (!response.ok) throw new Error('ไม่สามารถดึงข้อมูลสินค้าได้');
 
         const res = await response.json();
-        // Mapping ข้อมูลตามโครงสร้างที่ API ส่งมา (res.data.items)
         return res.data.items;
     },
 
@@ -22,7 +20,6 @@ export const shopService = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                // ส่งข้อมูลไปตาม Format ที่ API ต้องการ
                 items: cart.map(item => ({
                     code: item.code,
                     amount: item.quantity
